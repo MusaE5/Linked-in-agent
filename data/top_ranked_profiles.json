@@ -1,0 +1,11 @@
+[{ "name": "Evelyn Brown",
+    "title": "Data Science Intern at Borealis AI",
+    "bio": "Self-learning RNNs and exploring projects in NLP."}
+    ,{"name": "Henry Kim",
+    "title": "Data Science Intern at RBC",
+    "bio": "Building applications in NLP. Learning TensorFlow."},
+    {"name": "Oliver Said",
+    "title": "ML Intern at Telus",
+    "bio": "Building applications in CV. Learning scikit-learn.",
+    "location": "Vancouver"}
+]
