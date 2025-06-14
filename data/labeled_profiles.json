@@ -1,0 +1,402 @@
+[
+  {
+    "name": "Henry Lee",
+    "title": "AI Research Assistant at UBC",
+    "bio": "Interested in AI safety. Built tools using SQL.",
+    "location": "Toronto",
+    "rating": 5,
+    "relevance_score": 5
+  },
+  {
+    "name": "Abigail Wang",
+    "title": "AI Research Assistant at York",
+    "bio": "Focusing on A/B testing. Strong background in SQL.",
+    "location": "Vancouver",
+    "rating": 3,
+    "relevance_score": 2
+  },
+  {
+    "name": "Benjamin Brown",
+    "title": "Data Science Intern at Borealis AI",
+    "bio": "Building applications in A/B testing. Learning RNNs.",
+    "location": "Montreal",
+    "rating": 4,
+    "relevance_score": 2
+  },
+  {
+    "name": "Jack Wang",
+    "title": "AI Research Assistant at York",
+    "bio": "Building applications in NLP. Learning RNNs.",
+    "location": "Calgary",
+    "rating": 3,
+    "relevance_score": 2
+  },
+  {
+    "name": "Noah Brown",
+    "title": "AI Research Assistant at UofT",
+    "bio": "Interested in AI safety. Built tools using C++.",
+    "location": "Calgary",
+    "rating": 3,
+    "relevance_score": 2
+  },
+  {
+    "name": "Ava Wang",
+    "title": "ML Intern at Vector Institute",
+    "bio": "Worked on TensorFlow for NLP. Built end-to-end ML pipelines.",
+    "location": "Montreal",
+    "rating": 5,
+    "relevance_score": 2
+  },
+  {
+    "name": "Evelyn Brown",
+    "title": "Data Science Intern at Borealis AI",
+    "bio": "Self-learning RNNs and exploring projects in NLP.",
+    "location": "Montreal",
+    "rating": 5,
+    "relevance_score": 2
+  },
+  {
+    "name": "James Said",
+    "title": "Data Science Intern at Uber ATG",
+    "bio": "Focusing on A/B testing. Strong background in SQL.",
+    "location": "Toronto",
+    "rating": 4,
+    "relevance_score": 3
+  },
+  {
+    "name": "Benjamin Singh",
+    "title": "ML Intern at Scotiabank",
+    "bio": "Worked on scikit-learn for NLP. Built end-to-end ML pipelines.",
+    "location": "Toronto",
+    "rating": 1,
+    "relevance_score": 5
+  },
+  {
+    "name": "Lucas Patel",
+    "title": "Software Developer Intern at Shopify",
+    "bio": "Worked on RNNs for medical imaging. Built end-to-end ML pipelines.",
+    "location": "Toronto",
+    "rating": 5,
+    "relevance_score": 3
+  },
+  {
+    "name": "Henry Kim",
+    "title": "Data Science Intern at RBC",
+    "bio": "Building applications in NLP. Learning TensorFlow.",
+    "location": "Ottawa",
+    "rating": 5,
+    "relevance_score": 0
+  },
+  {
+    "name": "Evelyn Brown",
+    "title": "High School Student",
+    "bio": "Focusing on recommendation systems. Strong background in SQL.",
+    "location": "Montreal",
+    "rating": 4,
+    "relevance_score": 0
+  },
+  {
+    "name": "Sophia Wang",
+    "title": "ML Intern at Uber ATG",
+    "bio": "Interested in LLMs. Built tools using C++.",
+    "location": "Ottawa",
+    "rating": 3,
+    "relevance_score": 2
+  },
+  {
+    "name": "Charlotte Zhao",
+    "title": "Data Science Intern at Scotiabank",
+    "bio": "Self-learning transformers and exploring projects in CV.",
+    "location": "Vancouver",
+    "rating": 5,
+    "relevance_score": 0
+  },
+  {
+    "name": "Jack Lee",
+    "title": "CS Undergrad at Waterloo",
+    "bio": "Self-learning scikit-learn and exploring projects in CV.",
+    "location": "Calgary",
+    "rating": 3,
+    "relevance_score": 0
+  },
+  {
+    "name": "Ethan Singh",
+    "title": "High School Student",
+    "bio": "Focusing on medical imaging. Strong background in Python.",
+    "location": "Ottawa",
+    "rating": 2,
+    "relevance_score": 0
+  },
+  {
+    "name": "Emma Said",
+    "title": "CS Undergrad at Waterloo",
+    "bio": "Self-learning CNNs and exploring projects in signal processing.",
+    "location": "Montreal",
+    "rating": 2,
+    "relevance_score": 0
+  },
+  {
+    "name": "Isabella Zhao",
+    "title": "Data Science Intern at Uber ATG",
+    "bio": "Focusing on A/B testing. Strong background in Python.",
+    "location": "Toronto",
+    "rating": 2,
+    "relevance_score": 3
+  },
+  {
+    "name": "Jack Patel",
+    "title": "Data Science Intern at Telus",
+    "bio": "Focusing on medical imaging. Strong background in JavaScript.",
+    "location": "Toronto",
+    "rating": 5,
+    "relevance_score": 3
+  },
+  {
+    "name": "Benjamin Zhao",
+    "title": "Data Science Intern at Scotiabank",
+    "bio": "Interested in edge computing. Built tools using SQL.",
+    "location": "Toronto",
+    "rating": 5,
+    "relevance_score": 3
+  },
+  {
+    "name": "Ethan Brown",
+    "title": "Data Science Intern at Uber ATG",
+    "bio": "Self-learning PyTorch and exploring projects in signal processing.",
+    "location": "Calgary",
+    "rating": 2,
+    "relevance_score": 0
+  },
+  {
+    "name": "Benjamin Singh",
+    "title": "High School Student",
+    "bio": "Building applications in A/B testing. Learning PyTorch.",
+    "location": "Calgary",
+    "rating": 1,
+    "relevance_score": 0
+  },
+  {
+    "name": "Oliver Said",
+    "title": "ML Intern at Telus",
+    "bio": "Building applications in CV. Learning scikit-learn.",
+    "location": "Vancouver",
+    "rating": 3,
+    "relevance_score": 2
+  },
+  {
+    "name": "Abigail Singh",
+    "title": "Data Science Intern at Scotiabank",
+    "bio": "Worked on PyTorch for recommendation systems. Built end-to-end ML pipelines.",
+    "location": "Toronto",
+    "rating": 1,
+    "relevance_score": 3
+  },
+  {
+    "name": "Oliver Said",
+    "title": "Data Science Intern at Uber ATG",
+    "bio": "Interested in edge computing. Built tools using SQL.",
+    "location": "Ottawa",
+    "rating": 3,
+    "relevance_score": 0
+  },
+  {
+    "name": "Noah Ahmed",
+    "title": "High School Student",
+    "bio": "Self-learning transformers and exploring projects in signal processing.",
+    "location": "Toronto",
+    "rating": 2,
+    "relevance_score": 3
+  },
+  {
+    "name": "Charlotte Said",
+    "title": "CS Undergrad at UofT",
+    "bio": "Interested in web dev. Built tools using JavaScript.",
+    "location": "Montreal",
+    "rating": 2,
+    "relevance_score": 0
+  },
+  {
+    "name": "Mia Lee",
+    "title": "Data Science Intern at Scotiabank",
+    "bio": "Focusing on NLP. Strong background in JavaScript.",
+    "location": "Vancouver",
+    "rating": 2,
+    "relevance_score": 0
+  },
+  {
+    "name": "Mia Kim",
+    "title": "Data Science Intern at Borealis AI",
+    "bio": "Self-learning RNNs and exploring projects in signal processing.",
+    "location": "Ottawa",
+    "rating": 5,
+    "relevance_score": 2
+  },
+  {
+    "name": "Jack Lee",
+    "title": "Software Developer Intern at Borealis AI",
+    "bio": "Interested in robotics. Built tools using SQL.",
+    "location": "Calgary",
+    "rating": 1,
+    "relevance_score": 2
+  },
+  {
+    "name": "Emma Said",
+    "title": "Software Developer Intern at Shopify",
+    "bio": "Self-learning PyTorch and exploring projects in medical imaging.",
+    "location": "Toronto",
+    "rating": 5,
+    "relevance_score": 3
+  },
+  {
+    "name": "Henry Zhao",
+    "title": "Software Developer Intern at Telus",
+    "bio": "Building applications in signal processing. Learning scikit-learn.",
+    "location": "Montreal",
+    "rating": 4,
+    "relevance_score": 0
+  },
+  {
+    "name": "Sophia Patel",
+    "title": "CS Undergrad at UofT",
+    "bio": "Self-learning CNNs and exploring projects in signal processing.",
+    "location": "Vancouver",
+    "rating": 5,
+    "relevance_score": 0
+  },
+  {
+    "name": "Henry Said",
+    "title": "ML Intern at Shopify",
+    "bio": "Worked on TensorFlow for recommendation systems. Built end-to-end ML pipelines.",
+    "location": "Toronto",
+    "rating": 5,
+    "relevance_score": 5
+  },
+  {
+    "name": "James Singh",
+    "title": "AI Research Assistant at UofT",
+    "bio": "Focusing on recommendation systems. Strong background in Java.",
+    "location": "Montreal",
+    "rating": 1,
+    "relevance_score": 2
+  },
+  {
+    "name": "Jack Wang",
+    "title": "Software Developer Intern at Vector Institute",
+    "bio": "Worked on scikit-learn for recommendation systems. Built end-to-end ML pipelines.",
+    "location": "Toronto",
+    "rating": 5,
+    "relevance_score": 3
+  },
+  {
+    "name": "Benjamin Ahmed",
+    "title": "CS Undergrad at McGill",
+    "bio": "Interested in web dev. Built tools using Python.",
+    "location": "Calgary",
+    "rating": 3,
+    "relevance_score": 0
+  },
+  {
+    "name": "Abigail Brown",
+    "title": "Software Developer Intern at TD",
+    "bio": "Worked on transformers for NLP. Built end-to-end ML pipelines.",
+    "location": "Calgary",
+    "rating": 4,
+    "relevance_score": 0
+  },
+  {
+    "name": "Emma Said",
+    "title": "Software Developer Intern at Scotiabank",
+    "bio": "Worked on RNNs for recommendation systems. Built end-to-end ML pipelines.",
+    "location": "Montreal",
+    "rating": 1,
+    "relevance_score": 0
+  },
+  {
+    "name": "Evelyn Zhao",
+    "title": "CS Undergrad at York",
+    "bio": "Interested in edge computing. Built tools using C++.",
+    "location": "Toronto",
+    "rating": 2,
+    "relevance_score": 3
+  },
+  {
+    "name": "Henry Said",
+    "title": "Data Science Intern at Vector Institute",
+    "bio": "Interested in web dev. Built tools using Java.",
+    "location": "Ottawa",
+    "rating": 4,
+    "relevance_score": 0
+  },
+  {
+    "name": "Benjamin Singh",
+    "title": "ML Intern at TD",
+    "bio": "Building applications in CV. Learning scikit-learn.",
+    "location": "Toronto",
+    "rating": 1,
+    "relevance_score": 5
+  },
+  {
+    "name": "Mia Said",
+    "title": "High School Student",
+    "bio": "Building applications in medical imaging. Learning PyTorch.",
+    "location": "Calgary",
+    "rating": 1,
+    "relevance_score": 0
+  },
+  {
+    "name": "Ethan Wang",
+    "title": "AI Research Assistant at York",
+    "bio": "Worked on PyTorch for signal processing. Built end-to-end ML pipelines.",
+    "location": "Montreal",
+    "rating": 1,
+    "relevance_score": 2
+  },
+  {
+    "name": "Evelyn Ahmed",
+    "title": "CS Undergrad at McGill",
+    "bio": "Self-learning RNNs and exploring projects in medical imaging.",
+    "location": "Toronto",
+    "rating": 5,
+    "relevance_score": 3
+  },
+  {
+    "name": "Ava Zhao",
+    "title": "High School Student",
+    "bio": "Focusing on NLP. Strong background in SQL.",
+    "location": "Vancouver",
+    "rating": 5,
+    "relevance_score": 0
+  },
+  {
+    "name": "Ava Brown",
+    "title": "High School Student",
+    "bio": "Focusing on A/B testing. Strong background in Python.",
+    "location": "Ottawa",
+    "rating": 2,
+    "relevance_score": 0
+  },
+  {
+    "name": "Liam Lee",
+    "title": "AI Research Assistant at UBC",
+    "bio": "Building applications in signal processing. Learning transformers.",
+    "location": "Ottawa",
+    "rating": 2,
+    "relevance_score": 2
+  },
+  {
+    "name": "Jack Brown",
+    "title": "CS Undergrad at York",
+    "bio": "Interested in AI safety. Built tools using Python.",
+    "location": "Vancouver",
+    "rating": 1,
+    "relevance_score": 0
+  },
+  {
+    "name": "Sophia Patel",
+    "title": "Data Science Intern at TD",
+    "bio": "Focusing on signal processing. Strong background in Python.",
+    "location": "Vancouver",
+    "rating": 1,
+    "relevance_score": 0
+  }
+]
