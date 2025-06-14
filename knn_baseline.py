@@ -7,9 +7,12 @@ import os
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
+from sklearn.decomposition import PCA
 
 load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
+pca = PCA(n_components=50)
+
 
 # Load labeled profiles
 with open("data/labeled_profiles.json",'r')as f:
@@ -28,7 +31,7 @@ for bio in bios:
     )
     bio_embeddings.append(response.data[0].embedding)
 
-x = np.array(bio_embeddings)
+x = pca.fit_transform(bio_embeddings)
 y = np.array(labels)
 
 X_train,X_test, y_train, y_test = train_test_split(x,y, test_size = 0.2, random_state=42)
