@@ -42,17 +42,18 @@ linkedin-agent/
 ├── prompts/
 │   └── message_template.txt          # GPT-4 prompt template
 ├── models/
-│   ├── knn_baseline.py               # KNN with PCA
-│   ├── knn_combined_embedding.py     # KNN with combined embeddings
-│   └── rf_combined_embedding.py      # Random Forest with combined embeddings
+│   ├── knn_baseline.py               # KNN with raw embeddings
+│   ├── knn_pca.py                    # KNN with PCA-reduced embeddings
+│   ├── knn_combined_embedding.py     # KNN with combined query + bio embeddings
+│   ├── rf_combined_embedding.py      # Random Forest with combined embeddings
 ├── generate_messages.py              # GPT-4 messaging from top results
-├── score_profiles.py                 # Cosine similarity profile ranking
-├── main.py                           # (Legacy) original prompt-to-message script
+├── select_top_profiles.py            # Uses pre-trained KNN model to score and rank profiles based on user query
 ├── requirements.txt
 └── README.md
 ```
 
-## 📊 Model Experiments & MSE Scores
+
+## Model Experiments & MSE Scores
 
 All models use OpenAI's `text-embedding-ada-002` (1536-dim) for vectorization. Combined embeddings concatenate the query and the profile bio vectors.
 
