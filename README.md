@@ -34,22 +34,36 @@ The AI Agent:
 ---
 
 ## 🗂️ Project Structure
-
+```
 linkedin-agent/
 ├── data/
-│ ├── labeled_profiles.json # Labeled training data
-│ └── top_ranked_profiles.json # Filtered profiles for messaging
+│   ├── labeled_profiles.json         # Labeled training data
+│   └── top_ranked_profiles.json      # Filtered profiles for messaging
 ├── prompts/
-│ └── message_template.txt # GPT-4 prompt template
-├── knn_baseline.py # KNN + PCA + evaluation
-├── score_profiles.py # Cosine similarity profile ranking
-├── generate_messages.py # GPT-4 messaging from top results
-├── main.py # (Legacy) original prompt-to-message script
+│   └── message_template.txt          # GPT-4 prompt template
+├── models/
+│   ├── knn_baseline.py               # KNN with PCA
+│   ├── knn_combined_embedding.py     # KNN with combined embeddings
+│   └── rf_combined_embedding.py      # Random Forest with combined embeddings
+├── generate_messages.py              # GPT-4 messaging from top results
+├── score_profiles.py                 # Cosine similarity profile ranking
+├── main.py                           # (Legacy) original prompt-to-message script
 ├── requirements.txt
 └── README.md
+```
+
+## 📊 Model Experiments & MSE Scores
+
+All models use OpenAI's `text-embedding-ada-002` (1536-dim) for vectorization. Combined embeddings concatenate the query and the profile bio vectors.
+
+| Model           | Strategy               | MSE   |
+|----------------|------------------------|-------|
+| KNN            | Vanilla (raw vectors)  | 2.30  |
+| KNN            | PCA                    | 2.183 |
+| KNN            | Combined embeddings    | 2.10  |
+| Random Forest  | Combined embeddings    | 2.04  |
 
 
----
 
 ##  How It Works
 
