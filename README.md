@@ -34,23 +34,24 @@ A user inputs a career goal (e.g., "AI internships in Toronto"). The system:
 
 ## Project Structure
 
+```
 linkedin-agent/
 ├── data/
-│ ├── labeled_profiles.json # Labeled training data
-│ └── top_ranked_profiles.json # Filtered profiles for messaging
+│   ├── labeled_profiles.json         # Labeled training data
+│   └── top_ranked_profiles.json      # Filtered profiles for messaging
 ├── prompts/
-│ └── message_template.txt # GPT-4 prompt template
+│   └── message_template.txt          # GPT-4 prompt template
 ├── models/
-│ ├── knn_baseline.py # KNN with raw embeddings
-│ ├── knn_pca.py # KNN with PCA-reduced embeddings
-│ ├── knn_combined_embedding.py # KNN with combined query + bio embeddings
-│ ├── rf_combined_embedding.py # Random Forest with combined embeddings
-├── generate_messages.py # GPT-4 messaging from top results
-├── select_top_profiles.py # Ranks profiles for a new user query
+│   ├── knn_baseline.py               # KNN with raw embeddings
+│   ├── knn_pca.py                    # KNN with PCA-reduced embeddings
+│   ├── knn_combined_embedding.py     # KNN with combined query + bio embeddings
+│   ├── rf_combined_embedding.py      # Random Forest with combined embeddings
+├── generate_messages.py              # GPT-4 messaging from top results
+├── select_top_profiles.py            # Ranks profiles for a new user query
 ├── requirements.txt
 └── README.md
+```
 
----
 
 ## Model Experiments & MSE Scores
 
