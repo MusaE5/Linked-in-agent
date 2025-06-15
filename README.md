@@ -1,70 +1,69 @@
-#  LinkedIn AI Agent — Intelligent Outreach & Ranking System
+# LinkedIn AI Agent — Intelligent Outreach & Ranking System
 
-A machine learning-powered agent that helps users discover and message relevant LinkedIn profiles based on custom career goals.
+An AI-powered system that helps users discover, rank, and generate personalized outreach messages for relevant LinkedIn-style profiles, based on custom career goals.
 
-Built using:
-- OpenAI Embeddings + GPT-4o for smart message generation
-- A trained ML model (KNN + PCA) for profile relevance scoring
-- Real-world LinkedIn-style profile data
-- Modular backend with planned React-based frontend
-
----
-
-##  Key Features
-
-| Component                | Description                                                                 |
-|--------------------------|-----------------------------------------------------------------------------|
-|  ML Scoring Model       | Uses KNN + PCA on OpenAI embeddings to rank profiles based on a user query |
-|  Relevance Ranking     | Uses cosine similarity + labeled data to train predictive model             |
-|  GPT-4 Messaging Engine | Generates customized outreach messages for top-ranked profiles             |
-|  Frontend (React)       | In development — clean UI for input, ranking, message viewing, and export   |
+This project combines:
+- OpenAI Embeddings for semantic understanding
+- ML models for relevance prediction
+- GPT-4o for message generation
+- A modular backend (React frontend planned)
 
 ---
 
-##  Use Case
+## Key Features
 
-> A user inputs a goal (e.g., "AI internships in Toronto")
+| Component              | Description                                                                 |
+|------------------------|-----------------------------------------------------------------------------|
+| ML Scoring Model       | Trained KNN and Random Forest models on OpenAI embeddings                   |
+| Relevance Ranking      | Predicts how relevant each profile is to a user query                       |
+| GPT-4 Messaging Engine | Generates customized messages for top-ranked profiles                       |
+| Frontend (Planned)     | React or Streamlit UI for input, ranking, message viewing, and export       |
 
-The AI Agent:
-1. Scores LinkedIn-style profiles based on relevance to that goal
+---
+
+## Use Case
+
+A user inputs a career goal (e.g., "AI internships in Toronto"). The system:
+
+1. Scores LinkedIn-style profiles based on relevance
 2. Ranks them using a trained ML model
-3. Generates personalized outreach messages using GPT-4
-4. Returns a ranked list + corresponding tailored messages
+3. Generates personalized outreach messages with GPT-4
+4. Returns a list of top profiles and their corresponding messages
 
 ---
 
-## 🗂️ Project Structure
-```
+## Project Structure
+
 linkedin-agent/
 ├── data/
-│   ├── labeled_profiles.json         # Labeled training data
-│   └── top_ranked_profiles.json      # Filtered profiles for messaging
+│ ├── labeled_profiles.json # Labeled training data
+│ └── top_ranked_profiles.json # Filtered profiles for messaging
 ├── prompts/
-│   └── message_template.txt          # GPT-4 prompt template
+│ └── message_template.txt # GPT-4 prompt template
 ├── models/
-│   ├── knn_baseline.py               # KNN with raw embeddings
-│   ├── knn_pca.py                    # KNN with PCA-reduced embeddings
-│   ├── knn_combined_embedding.py     # KNN with combined query + bio embeddings
-│   ├── rf_combined_embedding.py      # Random Forest with combined embeddings
-├── generate_messages.py              # GPT-4 messaging from top results
-├── select_top_profiles.py            # Uses pre-trained KNN model to score and rank profiles based on user query
+│ ├── knn_baseline.py # KNN with raw embeddings
+│ ├── knn_pca.py # KNN with PCA-reduced embeddings
+│ ├── knn_combined_embedding.py # KNN with combined query + bio embeddings
+│ ├── rf_combined_embedding.py # Random Forest with combined embeddings
+├── generate_messages.py # GPT-4 messaging from top results
+├── select_top_profiles.py # Ranks profiles for a new user query
 ├── requirements.txt
 └── README.md
-```
 
+---
 
 ## Model Experiments & MSE Scores
 
-All models use OpenAI's `text-embedding-ada-002` (1536-dim) for vectorization. Combined embeddings concatenate the query and the profile bio vectors.
+All models use OpenAI’s `text-embedding-ada-002` (1536-dim) for vectorization. Combined embeddings concatenate the query and the profile bio vectors.
 
 | Model           | Strategy               | MSE   |
 |----------------|------------------------|-------|
-| KNN            | Vanilla (raw vectors)  | 2.30  |
-| KNN            | PCA                    | 2.183 |
+| KNN            | Raw vectors            | 2.30  |
+| KNN            | PCA-reduced            | 2.183 |
 | KNN            | Combined embeddings    | 2.10  |
 | Random Forest  | Combined embeddings    | 2.04  |
 
-```
+---
 
 ## How It Works
 
@@ -80,45 +79,45 @@ All models use OpenAI's `text-embedding-ada-002` (1536-dim) for vectorization. C
 
 ### Phase 2: Inference Pipeline
 
-- New user query is embedded
+- A new user query is embedded
 - Each profile bio is embedded and combined with the query embedding
-- Combined vector is passed into the trained model
+- Combined vectors are passed into the trained model
 - Model predicts relevance scores for all profiles
-- Top N profiles are saved to `top_ranked_profiles.json` for GPT-4 messaging
+- Top N profiles are saved to `top_ranked_profiles.json`
 
 ### Phase 3: Message Generation (In Progress)
 
-- GPT-4 generates personalized outreach messages using a pre-written prompt template
+- GPT-4 generates personalized outreach messages using a prompt template
 - Messages are generated for the top N profiles returned by the model
 - Output includes: profile name, message content, and relevance score
 
 ### Phase 4: UI & Agent Behavior (Planned)
 
-- Streamlit or React frontend for inputting goals and viewing results
+- Streamlit or React frontend for input, ranking, message viewing, and export
+- Optional filters by location, title level, and domain
 - Agent-like flow:
-  1. User inputs a career goal
-  2. Model ranks top profiles
+  1. User enters goal
+  2. System ranks and selects top profiles
   3. Messages are auto-generated
-  4. User can view, export, or copy messages
-- Add smart filtering (location, industry, etc.)
+  4. User reviews and exports
 
 ---
+
 ## Next Milestones
 
-- Add feature engineering:
-  - Title seniority mapping (e.g., intern < engineer < manager)
-  - Keyword overlap between query and bio
-  - Skill and interest match scoring
-- Test and benchmark XGBoost model
-- Add precision@K and Top-N evaluation
-- Build frontend interface (React or Streamlit)
-- Implement message quality scoring and feedback loop
-- Add export option (CSV or clipboard)
+- Feature engineering:
+  - Title seniority mapping
+  - Keyword/skill overlap
+- Try XGBoost model
+- Add Precision@K and Top-N evaluation metrics
+- Build Streamlit or React frontend
+- Message quality scoring and feedback loop
+- Export (CSV or clipboard)
 
 ---
 
 ## Notes
 
-- All profile data currently used is synthetic, generated to mimic LinkedIn-style bios and queries
-- No scraping or real LinkedIn automation is used in this version
-- The system is being developed as a prototype AI agent for career networking, with future potential for real-world deployment
+- All profiles are synthetic, generated to simulate real LinkedIn bios
+- No scraping or LinkedIn automation is used
+- This system is being developed as a prototype intelligent agent for job search and networking
