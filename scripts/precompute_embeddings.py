@@ -38,4 +38,4 @@ for i, profile in enumerate(profiles):
 with open("data/labeled_profiles_embedded.json", "w") as f:
     json.dump(embedded_profiles, f, indent=2)
 
-print("Saved 1100 embedded profiles to labeled_profiles_embedded.json")
+print("Saved 2000 embedded profiles to labeled_profiles_embedded.json")
