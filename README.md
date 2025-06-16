@@ -53,16 +53,49 @@ linkedin-agent/
 ```
 
 
-## Model Experiments & MSE Scores
+## 📊 Model Performance
 
-All models use OpenAI’s `text-embedding-ada-002` (1536-dim) for vectorization. Combined embeddings concatenate the query and the profile bio vectors.
+All models use OpenAI’s `text-embedding-ada-002` (1536-dim) for vectorization. Some models use full embeddings directly, while others extract scalar features such as cosine similarity, keyword overlap, or location match.
 
-| Model           | Strategy               | MSE   |
-|----------------|------------------------|-------|
-| KNN            | Raw vectors            | 2.30  |
-| KNN            | PCA-reduced            | 2.183 |
-| KNN            | Combined embeddings    | 2.10  |
-| Random Forest  | Combined embeddings    | 2.04  |
+---
+
+###  Small Dataset (≈200 profiles)
+
+| Model         | Features Used                                       | MSE   |
+|---------------|------------------------------------------------------|-------|
+| KNN           | Raw bio embeddings                                  | 2.30  |
+| KNN           | PCA-reduced bio embeddings                          | 2.183 |
+| KNN           | Combined query + bio embeddings                     | 2.10  |
+| Random Forest | Combined query + bio embeddings                     | 2.04  |
+| XGBoost       | Scalar + full embeddings + cosine similarity        | 2.55  |
+| XGBoost       | Query & bio embeddings (separate) + cosine sim      | 2.33  |
+| XGBoost       | Scalar-only (cos sim, overlap, location, title)     | 2.40  |
+
+---
+
+###  Large Dataset (1100 profiles)
+
+| Model    | Features Used                                   | MSE   | Precision@5 |
+|----------|--------------------------------------------------|-------|--------------|
+| XGBoost  | Scalar-only (cos sim, overlap, location, title) | 0.396 | 0.20         |
+
+---
+
+### 📌 Notes
+
+- **Scalar-only models** include features like:
+  - Cosine similarity
+  - Keyword overlap
+  - Location match
+  - Title seniority scores
+
+- **Combined embeddings** = `[query_embedding + bio_embedding]` → 3072-dim vector
+
+- All models are trained as **regressors** and evaluated using:
+  - **MSE** (Mean Squared Error)
+  - **Precision@5**: Fraction of top 5 ranked profiles with `relevance_score ≥ 4`
+
+
 
 ---
 
