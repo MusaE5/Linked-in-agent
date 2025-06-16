@@ -37,43 +37,58 @@ A user inputs a career goal (e.g., "AI internships in Toronto"). The system:
 ```
 linkedin-agent/
 ├── data/
-│   ├── labeled_profiles.json         # Labeled training data
-│   └── top_ranked_profiles.json      # Filtered profiles for messaging
-├── prompts/
-│   └── message_template.txt          # GPT-4 prompt template
+│   ├── labeled_profiles.json               # Full dataset with query, bio, and raw labels
+│   ├── labeled_profiles_embedded.json      # Same dataset with OpenAI embeddings (bio_emb, query_emb)
+│   ├── refined_labels.json                 # Refined labels for some profiles (indexed by ID)
+│   └── top_ranked_profiles.json            # Output: top-ranked profiles based on user query
+│
 ├── models/
-│   ├── knn_baseline.py               # KNN with raw embeddings
-│   ├── knn_pca.py                    # KNN with PCA-reduced embeddings
-│   ├── knn_combined_embedding.py     # KNN with combined query + bio embeddings
-│   ├── rf_combined_embedding.py      # Random Forest with combined embeddings
-├── generate_messages.py              # GPT-4 messaging from top results
-├── select_top_profiles.py            # Ranks profiles for a new user query
+│   ├── knn_baseline.py                     # KNN with raw bio embeddings
+│   ├── knn_pca.py                          # KNN with PCA-reduced embeddings
+│   ├── knn_combined_embedding.py           # KNN on concatenated query+bio embeddings
+│   ├── rf_combined_embedding.py            # Random Forest on combined embeddings
+│
+│   ├── xgboost_cosine_feature.py           # XGBoost using only cosine similarity + handcrafted features
+│   ├── xgboost_with_features.py            # XGBoost with all scalar features and basic query/bio embeddings
+│   ├── xgboost_only_scalars.py             # XGBoost trained using only scalar features (no embeddings)
+│   ├── xgboost_ranker_scalar_pca16.py      # XGBRanker with PCA(16)-reduced embeddings + scalar features + refined labels
+│
+├── scripts/
+│   ├── precompute_embeddings.py            # Embed bios and queries using text-embedding-ada-002
+│   └── refine_labels.py                    # Re-score selected samples using GPT-4 for better label quality
+│
+├── prompts/
+│   └── message_template.txt                # Prompt template used by GPT-4 to generate outreach messages
+│
+├── generate_messages.py                    # Uses GPT-4 to write personalized messages for top profiles
+├── select_top_profiles.py                  # Selects top-ranked profiles for a new user query
 ├── requirements.txt
 └── README.md
+
 ```
 
 
 ## 📊 Model Performance
 
-All models use OpenAI’s `text-embedding-ada-002` (1536-dim) for vectorization. Some models use full embeddings directly, while others extract scalar features such as cosine similarity, keyword overlap, or location match.
+
+All models use OpenAI’s `text-embedding-ada-002` (1536-dim) for vectorization. Some models use raw embeddings directly, while others extract scalar features such as cosine similarity, keyword overlap, location match, or title seniority. Recent models combine these with dimensionality reduction and refined labels.
 
 ---
 
-###  Small Dataset (≈200 profiles)
+###  Small Dataset (~200 Profiles)
 
-| Model         | Features Used                                       | MSE   |
-|---------------|------------------------------------------------------|-------|
-| KNN           | Raw bio embeddings                                  | 2.30  |
-| KNN           | PCA-reduced bio embeddings                          | 2.183 |
-| KNN           | Combined query + bio embeddings                     | 2.10  |
-| Random Forest | Combined query + bio embeddings                     | 2.04  |
-| XGBoost       | Scalar + full embeddings + cosine similarity        | 2.55  |
-| XGBoost       | Query & bio embeddings (separate) + cosine sim      | 2.33  |
-| XGBoost       | Scalar-only (cos sim, overlap, location, title)     | 2.40  |
+| Model         | Features Used                                                | MSE   |
+|---------------|--------------------------------------------------------------|-------|
+| KNN           | Raw bio embeddings                                           | 2.30  |
+| KNN           | PCA-reduced bio embeddings                                   | 2.183 |
+| KNN           | Combined query + bio embeddings                              | 2.10  |
+| Random Forest | Combined query + bio embeddings                              | 2.04  |
+| XGBoost       | Scalar + full embeddings + cosine similarity                 | 2.55  |
+| XGBoost       | Query & bio embeddings (separate) + cosine similarity        | 2.33  |
 
 ---
 
-###  Large Dataset (1100 profiles)
+###  Medium Dataset (~1100 Profiles)
 
 | Model    | Features Used                                   | MSE   | Precision@5 |
 |----------|--------------------------------------------------|-------|--------------|
@@ -81,19 +96,32 @@ All models use OpenAI’s `text-embedding-ada-002` (1536-dim) for vectorization.
 
 ---
 
+###  Large Dataset (2000 Profiles)
+
+| Model        | Features Used                                                                   | Precision@5 |
+|--------------|----------------------------------------------------------------------------------|--------------|
+| XGBRanker    | PCA(16)-reduced embeddings + scalar features (cos sim, overlap, loc, title) + refined labels | 0.13         |
+
+
+---
+
 ### 📌 Notes
 
-- **Scalar-only models** include features like:
-  - Cosine similarity
-  - Keyword overlap
-  - Location match
-  - Title seniority scores
+- **Scalar-only models** use hand-engineered features:
+  - Cosine similarity between query and bio embeddings
+  - Keyword overlap between query and bio
+  - Location match between query-inferred city and profile location
+  - Title seniority scores based on keywords (e.g., "intern", "student")
 
-- **Combined embeddings** = `[query_embedding + bio_embedding]` → 3072-dim vector
+- **Combined embeddings** = `[query_embedding + bio_embedding]` → 3072-dim input to ML models
 
-- All models are trained as **regressors** and evaluated using:
-  - **MSE** (Mean Squared Error)
-  - **Precision@5**: Fraction of top 5 ranked profiles with `relevance_score ≥ 4`
+- **PCA-reduced models** apply dimensionality reduction to embeddings (e.g., 16D each for query and bio) to reduce noise and speed up training
+
+- All models are trained as **regressors** or **rankers** using:
+  - **MSE (Mean Squared Error)** to measure prediction error on relevance scores (1–5)
+  - **Precision@5**: Fraction of top 5 predicted profiles for each query that have `relevance_score ≥ 4`
+
+- Some labels are refined using **GPT-4** to improve supervision quality on a subset of profiles
 
 
 
