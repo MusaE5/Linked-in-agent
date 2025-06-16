@@ -27,6 +27,17 @@ def title_seniority_score(bio):
         if kw in bio.lower():
             return 1
     return 0
+def precision_at_k(y_true, y_pred, k=5, threshold=4):
+    """
+    y_true: true relevance scores (list or np.array)
+    y_pred: predicted scores from model (same shape as y_true)
+    k: number of top-ranked profiles to evaluate
+    threshold: relevance score threshold to be considered "relevant"
+    """
+    top_k_indices = np.argsort(y_pred)[-k:]  # indices of top K predicted scores
+    top_k_true = [y_true[i] for i in top_k_indices]
+    relevant = [1 if score >= threshold else 0 for score in top_k_true]
+    return np.mean(relevant)    
 
 # Load API key
 load_dotenv()
@@ -69,4 +80,6 @@ model = xgb.XGBRegressor(objective="reg:squarederror", n_estimators=100, max_dep
 model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 print(f"\nXGBoost MSE (with features): {mean_squared_error(y_test, y_pred):.4f}")
+precision = precision_at_k(y_test, y_pred, k=5, threshold=4)
+print(f"Precision@5: {precision:.2f}")    
 joblib.dump(model, "models/xgboost_with_features.pkl")
