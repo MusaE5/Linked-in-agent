@@ -1,3 +1,12 @@
+⚠️ **Legacy Repo Notice**
+
+This repository contains early experiments and modeling tests for my LinkedIn Agent project, using synthetic data and simple baselines (KNN, Random Forest, etc.).
+
+🚀 The **active, production-grade version** using real LinkedIn data, XGBoostRanker, and GPT messaging is now here: [linkedin-agent-ml](https://github.com/MusaE5/linkedin-agent-ml)
+
+This repo is archived for reference only.
+
+
 # LinkedIn AI Agent — Intelligent Outreach & Ranking System
 
 An AI-powered system that helps users discover, rank, and generate personalized outreach messages for relevant LinkedIn-style profiles, based on custom career goals.
